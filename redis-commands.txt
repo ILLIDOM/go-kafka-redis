@@ -1,0 +1,7 @@
+## connect to redis cli
+docker exec -it <container-hash> redis-cli
+
+## show databases
+CONFIG GET databases
+
+## 

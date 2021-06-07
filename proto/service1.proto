@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "example.com/prototype/proto";
+
+package proto;
+
+service InterfaceService {
+    rpc GetReceivedBytes (InterfaceRequest) returns (InterfaceReply) {}
+    rpc GetSentBytes (InterfaceRequest) returns (InterfaceReply) {}
+}
+
+message InterfaceRequest {
+    string interfaceName = 1;
+    string routerName = 2;
+}
+
+message InterfaceReply {
+    int64 receivedBytes = 1;
+}

@@ -1,0 +1,41 @@
+## Get Kafka Shell
+docker exec -it apache-kafka_kafka_1 bash
+
+## To create a new topic named test
+kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test
+ 
+## To start a producer that publishes datastream from standard input to kafka
+kafka-console-producer.sh --broker-list localhost:9092 --topic test
+
+## The following command starts a consumer which feeds on test topic:
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test
+
+## On producer: You can now type messages in the new prompt and everytime you hit return the new line is printed in the consumer prompt. For example:
+Test
+
+## List all topics
+kafka-topics.sh --list --zookeeper zookeeper:2181
+
+
+
+
+
+
+// create topic
+docker-compose exec kafka kafka-topics \
+  --create \
+  --bootstrap-server localhost:9092 \
+  --replication-factor 1 \
+  --partitions 1 \
+  --topic users
+
+// list topics
+docker-compose exec kafka kafka-topics \
+  --list \
+  --bootstrap-server localhost:9092
+
+// show messages in topic
+docker-compose exec kafka kafka-consumer \
+  --bootstrap-server localhost:9092 \
+  --topic users \
+  --from-beginning
