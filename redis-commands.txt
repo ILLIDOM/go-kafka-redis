@@ -4,4 +4,11 @@ docker exec -it <container-hash> redis-cli
 ## show databases
 CONFIG GET databases
 
-## 
+## SET KEY
+SET title:1 "The Hobbit"
+
+## GET KEY
+GET title:1
+
+## GET all keys
+KEYS *
